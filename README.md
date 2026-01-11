@@ -26,9 +26,10 @@ Online, the first step is the search box. When search fails:
 
 ⚠️ Customers lose trust:
 ⏱ They spend more time searching instead of buying
-💸 GMV & retention drop
-Complexity arises because ethnic items often have ambiguous keywords and multiple ways of writing. Customers try variations, switch languages, and remove tones to find what they need. This persistence signals strong intent 💪, and the system must adapt, not the user.
 
+💸 GMV & retention drop
+
+Complexity arises because ethnic items often have ambiguous keywords and multiple ways of writing. Customers try variations, switch languages, and remove tones to find what they need. This persistence signals strong intent 💪, and the system must adapt, not the user.
 
 
 🔍 What We Observed & Analyzed
@@ -42,8 +43,11 @@ We also analyzed no-hit keywords to identify gaps in our catalog.
 
 Before optimization, all categories were displayed equally. High search volume often existed for products that were not searchable, and customers repeatedly tried variations.
 Behavioral insights revealed that:
+
 ✏️ Users adapt queries (add/remove words)
+
 🔄 Switch languages
+
 ❌ Remove tones
 
 -> Persistent behavior signals high intent
@@ -51,47 +55,70 @@ Behavioral insights revealed that:
 **🛠 How We Fixed It – Search Relevance Strategy**
 
 We implemented a Search Relevance Strategy grounded in customer behavior and data.
-Keyword Normalization & Mapping:
-Handle Vietnamese tone vs flat
-Map Vietnamese ↔ English synonyms
 
-Group multiple meanings under one normalized keyword
+First thing first. Apply Keyword Normalization & Mapping:
 
-Example: "bo" → beef, avocado, margarine
-Rather than guessing intent upfront, behavior clarifies intent:
-Search "bo" → most users add avocado → avocado ranks higher 🥑
-Search "bò" → most users add beef → beef ranks highest 🥩
-The system continuously learns and updates rankings based on user actions 🔁.
+- Handle Vietnamese tone vs flat
 
+- Map Vietnamese ↔ English synonyms
 
+- Group multiple meanings under one normalized keyword
+
+- Example: "bo" → beef, avocado, margarine
+
+-> Rather than guessing intent upfront, behavior clarifies intent:
+
+- Search "bo" → most users add avocado → avocado ranks higher 🥑
+
+- Search "bò" → most users add beef → beef ranks highest 🥩
+
+-> The system continuously learns and updates rankings based on user actions 🔁.
 
 📈 Search Ranking System – Behavioral Data Flow
+
 🔎 User Query: Customer types a query.
+
 📝 Query Preprocessing: Normalize text, detect language, optionally flatten tone.
+
 🔑 Keyword Normalization & Mapping: Map query to all possible SKUs, handle synonyms/multi-language.
+
 📦 Candidate SKU Generation: Pull matching SKUs from catalog with metadata (title, bullets, attributes).
+
 📊 Behavioral Scoring & Ranking: CTR, ATC, CVR, engagement, bounce, seasonality → compute weighted ranking.
+
 🛍 Search Result Display: Present top-ranked SKUs + auto-suggestions / "Did you mean?"
+
 🔁 Feedback Loop / Continuous Learning: Track actions, update behavioral scores, improve keyword normalization & ranking over time.
 
-The pre-display stage retrieves all relevant items and prioritizes high-demand, high-relevance items, letting user behavior clarify intent.
+The pre-display stage retrieves all relevant items and prioritizes high-demand, high-relevance items, letting user behavior clarify intent. Retrieves all relevant items containing “bo” in the product title, vietnamese name or common food phrase, eg:
+
 <img width="682" height="492" alt="image" src="https://github.com/user-attachments/assets/8c860109-03ec-481e-9c6f-2860f5e6e4a3" />
 
 📊 Results & Application
 
 The impact was clear:
+
 +4.8pt YoY improvement in Search Hit Rate (SHR) 📈
+
 SHR consistently >80% vs previous average of 75%
+
 Reduced no-hit searches for high-intent keywords
+
 Improved conversion for ambiguous queries
+
 Better seasonal preparedness for ethnic demand 🎉
 
 This project shows how complex, multi-language customer behavior can be translated into a scalable, data-driven search strategy. The system adapts to the user, improving discoverability, trust, and GMV, while providing actionable insights for catalog, merchandising, and marketing teams.
 
-✅ Key Takeaways
-Customer behavior drives search relevance 🔑
-Multi-language and ambiguous searches require keyword normalization & mapping
-Real behavior (CTR, ATC, CVR, engagement) determines ranking
-Continuous monitoring ensures the system evolves with user needs 🔄
+🔑 Key Takeaways
+
+While the improvements have significantly increased search relevance and user satisfaction, we are still learning and iterating:
+User behavior keeps evolving, especially with new arrivals and seasonal products 🥮, so our ranking and normalization models need constant adjustment.
+Multi-language searches continue to be challenging, particularly for second-generation and newer immigrant users switching between English and Vietnamese.
+
+No-hit searches for niche products still occur, highlighting the need for continuous catalog expansion and behavioral analysis.
+The project reinforced that real user behavior, not assumptions, drives relevance, and ongoing feedback loops are critical to adapt the system as the marketplace grows.
+
+In short: this project is not a one-time fix, but a living system that adapts as customer needs, languages, and seasonal trends evolve.
 
 
